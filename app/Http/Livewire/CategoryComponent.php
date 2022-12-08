@@ -36,6 +36,11 @@ class CategoryComponent extends Component
         if($this->shorting=='price_desc'){
             $products=Products::where('category_id',$category_id)->orderBy('regular_price','DESC')->paginate($this->pagesize);
 
+
+
+
+
+
         }
         elseif($this->shorting=='price_asc'){
             $products=Products::where('category_id',$category_id)->orderBy('regular_price','ASC')->paginate($this->pagesize);
