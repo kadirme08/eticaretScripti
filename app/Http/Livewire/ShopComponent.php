@@ -7,6 +7,8 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Models\Categories;
+use MongoDB\Driver\Session;
+
 class ShopComponent extends Component
 {
      public $shorting;
@@ -24,18 +26,15 @@ class ShopComponent extends Component
 
 
      public function store($product_id,$product_name,$product_price){
-         Cart::instace('cart')->add($product_id,$product_name,1,$product_price)->associate('App\Models\Products');
+         Cart::instance('cart')->add($product_id,$product_name,1,$product_price)->associate('App\Models\Products');
          session()->flash('succses','Ürün ekleme İşlemi Başarılı');
          $this->emitTo('cart-icon-component','refreshComponent');
-
-         return redirect()->route('shop.cart');
      }
       public function removeWhistList($product_id){
           foreach (Cart::instance('wishlist')->content() as $witem) {
               if($witem->id==$product_id){
                   Cart::instance('wishlist')->remove($witem->rowId);
                   $this->emitTo('wislishicon-component','refreshComponent');
-
                   return;
 
               }

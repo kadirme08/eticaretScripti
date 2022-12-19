@@ -3,9 +3,9 @@
         <div class="page-header breadcrumb-wrap">
             <div class="container">
                 <div class="breadcrumb">
-                    <a href="index.html" rel="nofollow">Home</a>
-                    <span></span> Shop
-                    <span></span> Your Cart
+                    <a href="/" rel="nofollow">Anasayfa</a>
+                    <span></span> Ürünler
+                    <span></span> Sepetim
                 </div>
             </div>
         </div>
@@ -17,12 +17,12 @@
                             <table class="table shopping-summery text-center clean">
                                 <thead>
                                 <tr class="main-heading">
-                                    <th scope="col">Image</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Price</th>
-                                    <th scope="col">Quantity</th>
-                                    <th scope="col">Subtotal</th>
-                                    <th scope="col">Remove</th>
+                                    <th scope="col">Resim</th>
+                                    <th scope="col">Ürün İsmi</th>
+                                    <th scope="col">Fiyat</th>
+                                    <th scope="col">Adet</th>
+                                    <th scope="col">Toplam</th>
+                                    <th scope="col">Sil</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -58,12 +58,7 @@
                                     <td class="action" data-title="Remove"><a href="#" wire:click.prevent="destroy('{{$item->rowId}}')" class="text-muted"><i class="fi-rs-trash"></i></a></td>
                                 </tr>
                                 @endforeach
-                                @else
-                                    <tr >
-                                        <td style="text-align: center;margin-top:20px" colspan="5"> <p>Sepetinizde Herhangi Bir Ürün bulunamadı..</p></td>
-                                    </tr>
 
-                                @endif
 
                                 <tr>
                                     <td colspan="6" class="text-end">
@@ -73,53 +68,12 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="cart-action text-end">
-                            <a class="btn  mr-10 mb-sm-15"><i class="fi-rs-shuffle mr-10"></i>Update Cart</a>
-                            <a class="btn "><i class="fi-rs-shopping-bag mr-10"></i>Continue Shopping</a>
-                        </div>
+
                         <div class="divider center_icon mt-50 mb-50"><i class="fi-rs-fingerprint"></i></div>
                         <div class="row mb-50">
                             <div class="col-lg-6 col-md-12">
-                                <div class="heading_s1 mb-3">
-                                    <h4>Calculate Shipping</h4>
-                                </div>
-                                <p class="mt-15 mb-30">Flat rate: <span class="font-xl text-brand fw-900">5%</span></p>
-                                <form class="field_form shipping_calculator">
-                                    <div class="form-row row">
-                                        <div class="form-group col-lg-6">
-                                            <input required="required" placeholder="State / Country" name="name" type="text">
-                                        </div>
-                                        <div class="form-group col-lg-6">
-                                            <input required="required" placeholder="PostCode / ZIP" name="name" type="text">
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="form-group col-lg-12">
-                                            <button class="btn  btn-sm"><i class="fi-rs-shuffle mr-10"></i>Update</button>
-                                        </div>
-                                    </div>
-                                </form>
-                                <div class="mb-30 mt-50">
-                                    <div class="heading_s1 mb-3">
-                                        <h4>Apply Coupon</h4>
-                                    </div>
-                                    <div class="total-amount">
-                                        <div class="left">
-                                            <div class="coupon">
-                                                <form action="#" target="_blank">
-                                                    <div class="form-row row justify-content-center">
-                                                        <div class="form-group col-lg-6">
-                                                            <input class="font-medium" name="Coupon" placeholder="Enter Your Coupon">
-                                                        </div>
-                                                        <div class="form-group col-lg-6">
-                                                            <button class="btn  btn-sm"><i class="fi-rs-label mr-10"></i>Apply</button>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+
+
                             </div>
                             <div class="col-lg-6 col-md-12">
                                 <div class="border p-md-4 p-30 border-radius cart-totals">
@@ -148,6 +102,17 @@
                                 </div>
                             </div>
                         </div>
+                        @else
+                            <div class="container">
+                                <div class="row">
+                                    <span style="text-align: center;margin-bottom: 60px;margin-top:50px;font-size: 25px">Sepetinizde Ürün Bulunamadı.
+                                        <i class="fa-solid fa-basket-shopping fa-lg"></i></span>
+
+                                </div>
+
+                            </div>
+
+                        @endif
                     </div>
                 </div>
             </div>

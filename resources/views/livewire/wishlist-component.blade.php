@@ -19,8 +19,8 @@
         <div class="page-header breadcrumb-wrap">
             <div class="container">
                 <div class="breadcrumb">
-                    <a href="index.html" rel="nofollow">Home</a>
-                    <span></span> Shop
+                    <a href="/" rel="nofollow">Anasayfa</a>
+                    <span></span> Favoriler
                 </div>
             </div>
         </div>
@@ -28,12 +28,16 @@
             <div class="container">
                 <div class="row product-grid-3">
 
-                    @foreach(Cart::instance('wishlist')->content() as $item)
+                    @php
+                        $witems=Cart::instance('cart')->instance('wishlist')->content()->pluck('id');
+                    @endphp
+                     @if(Cart::instance('wishlist')->count()>0)
+                      @foreach(Cart::instance('wishlist')->content() as $item)
                         <div class="col-lg-3 col-md-3 col-6 col-sm-6">
                             <div class="product-cart-wrap mb-30">
                                 <div class="product-img-action-wrap">
                                     <div class="product-img product-img-zoom">
-                                        <a href="{{route('detail.product',['slug'=>$item->slug])}}">
+                                        <a href="{{route('detail.product',['slug'=>$item->model->slug])}}">
                                             <img class="default-img" src="{{asset('assets/imgs/shop/product-')}}{{$item->model->id}}-1.jpg" alt="{{$item->model->name}}">
                                             <img class="hover-img" src="{{asset('assets/imgs/shop/product-')}}{{$item->model->id}}-2.jpg" alt="{{$item->model->name}}">
                                         </a>
@@ -75,6 +79,14 @@
                             </div>
                         </div>
                     @endforeach
+                    @else
+                         <div class="container">
+                             <div class="row">
+                                 <p style="text-align: center">Favoriye Alınmış Ürün Bulunamadı.</p>
+                             </div>
+
+                         </div>
+                    @endif
 
 
                 </div>

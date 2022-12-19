@@ -8,6 +8,10 @@ use App\Http\Livewire\CheckoutComponent;
 use App\Http\Livewire\DetailsComponent;
 use App\Http\Livewire\SearchComponent;
 use App\Http\Livewire\WishlistComponent;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ProductController;
+
+
 
 
 
@@ -54,13 +58,21 @@ Route::get('/search',SearchComponent::class)->name('product.search');
   //  return view('dashboard');
 //})->middleware(['auth', 'verified'])->name('dashboard');
 
- Route::middleware(['auth'])->group(function (){
+ Route::get('admin/index',[AdminController::class,'show'])->name('show');
 
-     Route::get('/user/dashboard',UserDasboardComponent::class)->name('user.dashboard');
- });
+Route::get('urun-listele',[ProductController::class,'showList'])->name('showList');
+Route::get('urun-ekle',[ProductController::class,'productAdd'])->name('showAdd');
+Route::post('urun-ekle-post',[ProductController::class,'add'])->name('add');
+Route::get('urun-güncelle',[ProductController::class,'updateShow'])->name('updateShow');
 
-Route::middleware(['auth','authadmin'])->group(function (){
+Route::get('urun-durum',[ProductController::class,'changeStatus'])->name('changeStatus');
 
-    Route::get('/admin/dashboard',AdminDasboardComponent::class)->name('admin.dashboard');
-});
+Route::get('urun-delete',[ProductController::class,'delete'])->name('delete');
+
+
+
+
+
+
+
 require __DIR__.'/auth.php';

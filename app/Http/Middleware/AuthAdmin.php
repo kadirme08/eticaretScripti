@@ -18,6 +18,7 @@ class AuthAdmin
     public function handle(Request $request, Closure $next)
     {
         if(Auth::user()->utype=='ADM'){
+            dd('admine geldi');
             return $next($request);
         }else{
             session()->flush();

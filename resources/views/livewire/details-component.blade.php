@@ -82,8 +82,8 @@
                                         <div class="clearfix product-price-cover">
                                             <div class="product-price primary-color float-left">
                                                 <ins><span class="text-brand">{{$product->regular_price}}₺</span></ins>
-                                               <!-- <ins><span class="old-price font-md ml-15">$200.00</span></ins>
-                                                <span class="save-price  font-md color3 ml-15">25% Off</span>-->
+                                                <ins><span class="old-price font-md ml-15">$200.00</span></ins>
+                                                <span class="save-price  font-md color3 ml-15">25% Off</span>
                                             </div>
                                         </div>
                                         <div class="bt-1 border-color-1 mt-15 mb-15"></div>
@@ -534,7 +534,7 @@
                                     <img src="{{asset('assets/imgs/shop/product-')}}{{$nproduct->id}}-1.jpg"  alt="{{$nproduct->name}}">
                                 </div>
                                 <div class="content pt-10">
-                                    <h5><a href="{{route('detail.product',['slug'=>$nproduct->id])}}">{{$nproduct->name}}</a></h5>
+                                    <h5><a href="{{route('detail.product',['slug'=>$nproduct->slug])}}">{{$nproduct->name}}</a></h5>
                                     <p class="price mb-0 mt-5">{{$nproduct->regular_price}}</p>
                                     <div class="product-rate">
                                         <div class="product-rating" style="width:90%"></div>
