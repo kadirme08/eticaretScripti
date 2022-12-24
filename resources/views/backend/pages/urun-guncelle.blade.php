@@ -35,16 +35,16 @@
                                 </div>
                             @endif
                             <div class="card-body">
-                                <form action="{{route('add')}}" method="post" enctype="multipart/form-data">
+                                <form action="{{route('update')}}" method="post" enctype="multipart/form-data">
+                                    <input type="hidden" name="id" value="{{$urunUpdate->id}}">
                                     @csrf
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label class="control-label">Kategoriler</label>
                                                 <select class="form-control select2" name="kategori_id">
-                                                    <option>Kategori Seç</option>
-                                                    @foreach($category as $cat)
-                                                        <option value="{{$cat->id}}">{{$cat->name}}</option>
+                                                    @foreach($catlist as $cat)
+                                                        <option value="{{$cat->id}}" @if($_GET['kategori_id']==$cat->id) selected @endif >{{$cat->name }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -123,26 +123,23 @@
                                             <div class="form-group">
                                                 <label class="control-label">Ürün Durumu</label>
                                                 <select class="form-control" name="urun_durum">
-                                                    @if($urunUpdate->urun_durum=='')
-                                                        <option selected value="">Seçin..</option>
+
                                                         <option value="Popularurun" >Popular Ürün</option>
                                                         <option value="Yeniurun" >Yeni Ürün</option>
                                                         <option value="Anasayfa" >Urun Anasayfa Göster</option>
-                                                    @endif
+
                                                     @if($urunUpdate->urun_durum=='Popularurun')
-                                                    <option>Seçin..</option>
                                                     <option value="Popularurun" selected>Popular Ürün</option>
                                                     <option value="Yeniurun" >Yeni Ürün</option>
                                                     <option value="Anasayfa" >Urun Anasayfa Göster</option>
                                                     @endif
                                                     @if($urunUpdate->urun_durum=='Yeniurun')
-                                                            <option>Seçin..</option>
                                                             <option value="Popularurun" >Popular Ürün</option>
                                                             <option value="Yeniurun" selected>Yeni Ürün</option>
                                                             <option value="Anasayfa" >Urun Anasayfa Göster</option>
                                                     @endif
                                                     @if($urunUpdate->urun_durum=='anasayfa')
-                                                            <option>Seçin..</option>
+
                                                             <option value="Popularurun" >Popular Ürün</option>
                                                             <option value="Yeniurun" >Yeni Ürün</option>
                                                             <option value="Anasayfa"selected >Urun Anasayfa Göster</option>
@@ -165,16 +162,30 @@
                                         </div>
                                     </div>
                                     <div class="card">
+                                        @if($urunUpdate->image)
                                       <div style="width: 250px;height: 250px;">
-                                        <img src="{{asset("urunler/$urunUpdate->image")}}"  width=100%; height="100%"; object-fit:cover;>
+                                        <img src="{{asset("urunler/$urunUpdate->image")}}"  width=100%; height="100%"; style=" border-radius: 25px">
                                       </div>
+                                        @endif
                                         <div class="card-body">
                                             <h4 class="card-title mb-3">Ürün Resim</h4>
                                             <div class="fallback">
                                                 <input name="urun_resim" type="file"/>
                                             </div>
                                         </div>
+
                                         <div class="card">
+                                            @if($urunUpdate->images)
+                                                <div class="container">
+                                                    <div class="row">
+                                                @foreach($i as $key=>$value)
+                                                <div class="col-md-2" style="width: 350px;height: 150px;">
+                                                    <img src="{{asset("urunler/$value")}}" width=100%; height="100%"; style="  border-radius:15px;  margin-top: 15px ">
+                                                </div>
+                                                @endforeach
+                                                    </div>
+                                                </div>
+                                            @endif
                                             <div class="card-body">
                                                 <h4 class="card-title mb-3">Çoklu Resim</h4>
                                                 <div class="fallback">

@@ -10,6 +10,7 @@ use App\Http\Livewire\SearchComponent;
 use App\Http\Livewire\WishlistComponent;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoriesController;
 
 
 
@@ -60,14 +61,25 @@ Route::get('/search',SearchComponent::class)->name('product.search');
 
  Route::get('admin/index',[AdminController::class,'show'])->name('show');
 
+ //Urun Ekleme Çıkarma
 Route::get('urun-listele',[ProductController::class,'showList'])->name('showList');
 Route::get('urun-ekle',[ProductController::class,'productAdd'])->name('showAdd');
 Route::post('urun-ekle-post',[ProductController::class,'add'])->name('add');
 Route::get('urun-güncelle',[ProductController::class,'updateShow'])->name('updateShow');
-
+Route::post('urun-güncelle-post',[ProductController::class,'update'])->name('update');
 Route::get('urun-durum',[ProductController::class,'changeStatus'])->name('changeStatus');
-
 Route::get('urun-delete',[ProductController::class,'delete'])->name('delete');
+//Kategori Ekleme Çıkarma
+
+Route::get('kategori-listele',[CategoriesController::class,'listShow'])->name('listShowCategory');
+
+Route::get('kategori-ekle',[CategoriesController::class,'addShow'])->name('addShowCategory');
+Route::get('kategori-urun',[CategoriesController::class,'addShowList'])->name('showCategoryProduct');
+Route::get('kategori-duzenle',[CategoriesController::class,'updateCategory'])->name('updateCategory');
+Route::post('kategori-duzenle',[CategoriesController::class,'updateCategoryPost'])->name('updateCategoryPost');
+Route::get('kategori-sil',[CategoriesController::class,'deleteCategory'])->name('deleteCategory');
+Route::post('searchProduct',[CategoriesController::class,'searchProduct'])->name('searchProduct');
+Route::get('changeStatusCategory',[CategoriesController::class,'changeStatus'])->name('changeStatusCategory');
 
 
 

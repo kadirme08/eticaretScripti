@@ -9,7 +9,7 @@
                 <li class="menu-title">Menu</li>
 
                 <li>
-                    <a href="index.html" class="waves-effect">
+                    <a href="{{route('show')}}" class="waves-effect">
                         <i class="bx bx-home-circle"></i>
                         <span>Anasayfa</span>
                     </a>
@@ -23,7 +23,16 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('showList')}}">Ürün Listele</a></li>
-                        <li><a href="ecommerce-product-detail.html">Ürün ekle</a></li>
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="bx bx-briefcase-alt-2"></i>
+                        <span>Kategoriler</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{route('listShowCategory')}}">Kategori Listele</a></li>
 
                     </ul>
                 </li>

@@ -42,7 +42,7 @@
                                             <div class="form-group">
                                                 <label class="control-label">Kategoriler</label>
                                                 <select class="form-control select2" name="kategori_id">
-                                                    <option>Kategori Seç</option>
+
                                                     @foreach($category as $cat)
                                                         <option value="{{$cat->id}}">{{$cat->name}}</option>
                                                     @endforeach

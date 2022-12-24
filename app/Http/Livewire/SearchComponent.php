@@ -21,7 +21,6 @@ class SearchComponent extends Component
         $this->fill(request()->only('q'));
         $this->search_term='%'.$this->q.'%';
 
-
     }
 
 
@@ -36,6 +35,7 @@ class SearchComponent extends Component
     public function render()
     {
         if($this->search_term!==""){
+            dd("burda");
 
             $products=Products::where('name','like',$this->search_term)->orderBy('regular_price','DESC')->paginate($this->pagesize);
         }else{

@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-    <div class="main-content vh-100">
+    <div class="main-content ">
         <div class="page-content">
             <div class="container-fluid">
                 <div class="row">
